@@ -1,0 +1,3 @@
+# Core API
+
+::: pydgey.core

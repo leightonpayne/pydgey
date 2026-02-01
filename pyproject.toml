@@ -1,0 +1,75 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pydgey"
+version = "0.1.0"
+description = "Interactive pipeline widgets for Google Colab and Jupyter."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "anywidget>=0.9.0",
+    "traitlets>=5.0.0",
+    "ipython>=7.0.0",
+    "rich",
+]
+classifiers = ["Development Status :: 3 - Alpha"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pydgey"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/pydgey/widget/dist" = "pydgey/widget/dist"
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64", "linux-aarch64", "osx-64", "osx-arm64"]
+
+[tool.pixi.dependencies]
+nodejs = "22.*"
+
+[tool.pixi.pypi-dependencies]
+pydgey = { path = ".", editable = true }
+zensical = "*"
+mkdocstrings = "*"
+mkdocstrings-python = "*"
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+
+[tool.pixi.feature.dev.dependencies]
+pytest = "*"
+pytest-mock = "*"
+ruff = "*"
+pip = "*"
+ipykernel = "*"
+bump-my-version = "*"
+
+[tool.pixi.tasks]
+postinstall = { cmd = "npm install --prefix frontend", description = "Install frontend dependencies" }
+build = { cmd = "npm run build --prefix frontend", description = "Build frontend production assets for Python wheel" }
+test = { cmd = "pytest", description = "Run backend Python tests" }
+lint = { cmd = "ruff check .", description = "Check Python code for lint errors" }
+format = { cmd = "ruff format .", description = "Format Python code with Ruff" }
+lint-ui = { cmd = "npm run lint --prefix frontend", description = "Run ESLint on frontend code" }
+clean = { cmd = "rm -rf frontend/dist", description = "Clean up built assets" }
+docs-clean = { cmd = "rm -rf .cache site", description = "Clean documentation cache and build artifacts" }
+docs-build = { cmd = "zensical build", depends-on = [
+    "docs-clean",
+], description = "Build documentation" }
+docs-serve = { cmd = "zensical serve", depends-on = [
+    "docs-clean",
+], description = "Serve documentation locally (with cache clean)" }
+bump = { cmd = "bump-my-version bump", description = "Bump version (usage: pixi run bump patch|minor|major)" }
+
+[tool.bumpversion]
+current_version = "0.1.0"
+commit = false
+tag = false
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
