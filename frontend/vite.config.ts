@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     minify: false,
     outDir: "../src/pydgey/widget/dist",
-    emptyOutDir: true,
+    emptyOutDir: false,
     lib: {
       entry: "src/widget.tsx",
       name: "widget",
