@@ -12,7 +12,7 @@ export default defineConfig({
   },
   build: {
     minify: false,
-    outDir: "../src/pydgey/dist",
+    outDir: "../src/pydgey/widget/dist",
     emptyOutDir: true,
     lib: {
       entry: "src/widget.tsx",

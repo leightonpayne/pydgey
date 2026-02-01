@@ -30,6 +30,9 @@ jobs:
           pixi-version: latest
           environments: default
 
+      - name: Build Frontend
+        run: pixi run build
+
       - name: Build Docs
         run: pixi run docs-build
 
