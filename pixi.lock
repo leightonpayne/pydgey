@@ -2768,7 +2768,7 @@ packages:
 - pypi: ./
   name: pydgey
   version: 0.1.0
-  sha256: 7e2870d4856bd9a44d3babaeb23a36df0b9a132fa3947e6ec7ae98e36da0f07d
+  sha256: a5c645fb940733b73650f2f3aedfe454dc38a27cf812c710c9768b07dd3b7291
   requires_dist:
   - anywidget>=0.9.0
   - traitlets>=5.0.0
