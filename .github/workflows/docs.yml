@@ -31,7 +31,9 @@ jobs:
           environments: default
 
       - name: Build Frontend
-        run: pixi run build
+        run: |
+          pixi run postinstall
+          pixi run build
 
       - name: Build Docs
         run: pixi run docs-build
