@@ -1,6 +1,6 @@
 # Pydgey
 
-[![Support](https://img.shields.io/pypi/status/pydgey?label=support)](https://pypi.org/project/pydgey/) [![PyPI](https://img.shields.io/pypi/v/pydgey?label=pypi)](https://pypi.org/project/pydgey/)
+[![Support](https://img.shields.io/pypi/status/pydgey?label=support&color=f3c539)](https://pypi.org/project/pydgey/) [![PyPI](https://img.shields.io/pypi/v/pydgey?label=pypi&color=107cb8)](https://pypi.org/project/pydgey/)
 
 <p align="center">
   <img src="docs/static/pydgey-logo.png" width="50%" alt="poorly drawn pydgey logo">
@@ -20,34 +20,4 @@ As the intended use is to run Pydgey widgets within the constraints of free Goog
 
 ## Getting Started
 
-Pydgey can be installed from PyPI:
-
-```bash
-$ pip install pydgey
-```
-
-### 💡 Example
-
-Create a launcher for an HMMER search pipeline. This will render an interactive widget in the notebook where users can upload files and configure E-values without writing code.
-
-```python
-from examples.hmmsearch.hmmsearch import HmmSearchPipeline
-from pydgey import create_launcher
-
-# Define your pipeline (or import a pre-made one)
-pipeline = HmmSearchPipeline()
-
-# Launch the interactive widget
-launcher = create_launcher(pipeline)
-launcher
-```
-
-This simple snippet produces a full-featured UI with file selectors, parameter inputs, and log streaming.
-
-## 🏗️ Contributing
-
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
-
-## ⚖️ License
-
-This library is provided under the **MIT License**. See [LICENSE](LICENSE) for more information.
+Read [the documentation](https://leightonpayne.github.io/pydgey/) for information on how to use the Pydgey framework.

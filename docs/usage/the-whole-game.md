@@ -42,8 +42,8 @@ class MyPipeline(Pipeline):
         # - title/subtitle: Displayed prominently in the widget header.
         config = PipelineConfig(
             name="demo_pipeline",
-            title="✨ Demo Pipeline",
-            subtitle="A simple demonstration of the whole game"
+            title="Demo Pipeline",
+            subtitle="A simple Pydgey demonstration"
         )
         super().__init__(config)
 ```
@@ -62,10 +62,10 @@ Implement the `define_layout` method to return a structure of Sections, Cards, a
         return Layout.Page([
             # Organize fields into collapsible sections
             Layout.Section("Input parameters", [
-            
+          
                 # A simple text input
                 Field.Text("name", "Your Name", default="Explorer", description="Who are we greeting?"),
-            
+          
                 # A numeric input with validation constraints
                 Field.Int("iterations", "Count", default=3, min=1, max=10),
             ])
@@ -91,10 +91,10 @@ It receives two arguments:
         # 1. Unpack parameters using the keys defined in your layout
         name = params.get("name")
         count = params.get("iterations")
-    
+  
         logger.info(f"Hello, {name}!")
         logger.step("Starting process...")
-    
+  
         # 2. Perform your actual work
         # This runs in a background thread, so the UI stays responsive!
         for i in range(count):
@@ -104,7 +104,7 @@ It receives two arguments:
 
             logger.info(f"Processing item {i+1}/{count}...")
             time.sleep(0.5)  # Simulate expensive computation
-        
+      
         # 3. Report success
         logger.success("All done! 🎉")
         return True
@@ -140,4 +140,3 @@ When the intended user opens the notebook:
 1. **No Code Scares**: They don't see functions, imports, or logic. They see a clean interface.
 2. **Safety Rails**: They can't enter invalid inputs (like negative counts) because your layout prevents it.
 3. **Feedback**: When they run it, they see real-time logs and progress bars, so they know exactly what's happening.
-4. **Persistence**: If you update the code in `src/`, they just need to pull the changes and restart the kernel—no copy-pasting required.
